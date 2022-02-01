@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:side_navigation/core/bar_item_tile.dart';
-//import 'package:side_navigation/core/bar_item_tile.dart';
+
 import 'side_navigation_bar_item.dart';
 
 /// Takes the data from [items] and builds [SideNavigationBarItemTile] with it.
@@ -53,8 +53,7 @@ class SideNavigationBar extends StatefulWidget {
       context.findAncestorStateOfType<_SideNavigationBarState>()!;
 }
 
-class _SideNavigationBarState extends State<SideNavigationBar>
-    with SingleTickerProviderStateMixin {
+class _SideNavigationBarState extends State<SideNavigationBar> with SingleTickerProviderStateMixin {
   final double minWidth = 70;
   final double maxWidth = 180;
   final double imageMinWidth = 60;
@@ -98,19 +97,16 @@ class _SideNavigationBarState extends State<SideNavigationBar>
       child: AnimatedSize(
         curve: Curves.easeIn,
         duration: const Duration(milliseconds: 350),
+        vsync: this,
         child: SizedBox(
             width: width,
             height: double.infinity,
             child: Column(
               children: [
-                // Header
-
-                // Navigation content
                 SizedBox(
                   width: imageWidth,
                   child: Padding(
-                    padding: const EdgeInsets.only(
-                        bottom: 50, top: 10, left: 7, right: 7),
+                    padding: const EdgeInsets.only(bottom: 50, top: 10, left: 7, right: 7),
                     child: Image.asset('images/logofooter.png'),
                   ),
                 ),
@@ -118,7 +114,7 @@ class _SideNavigationBarState extends State<SideNavigationBar>
                 Expanded(
                   child: Scrollbar(
                     child: ListView(
-                      children: _generateItems(expanded).first,
+                      children: _generateItems(expanded),
                     ),
                   ),
                 ),
@@ -128,9 +124,7 @@ class _SideNavigationBarState extends State<SideNavigationBar>
                     ? Align(
                         alignment: Alignment.bottomCenter,
                         child: IconButton(
-                          color: Colors.white,
-                          icon: Icon(
-                              expanded ? widget.shrinkIcon : widget.expandIcon),
+                          icon: Icon(expanded ? widget.shrinkIcon : widget.expandIcon),
                           onPressed: () {
                             setState(() {
                               if (expanded) {
@@ -150,6 +144,10 @@ class _SideNavigationBarState extends State<SideNavigationBar>
                 const SizedBox(
                   height: 10,
                 ),
+
+                const SizedBox(
+                  height: 10,
+                ),
               ],
             )),
       ),
@@ -157,9 +155,11 @@ class _SideNavigationBarState extends State<SideNavigationBar>
   }
 
   /// Takes [SideNavigationBarItem] data and builds new widgets with it.
-  List _generateItems(final bool _expanded) {
-    List _items = widget.items.asMap().entries.map<SideNavigationBarItemTile>(
-        (MapEntry<int, SideNavigationBarItem> entry) {
+  List<Widget> _generateItems(final bool _expanded) {
+    List<Widget> _items = widget.items
+        .asMap()
+        .entries
+        .map<SideNavigationBarItemTile>((MapEntry<int, SideNavigationBarItem> entry) {
       return SideNavigationBarItemTile(
           icon: entry.value.icon,
           label: entry.value.label,
