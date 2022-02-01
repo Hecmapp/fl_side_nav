@@ -1,6 +1,6 @@
 name: side_navigation
-description: Cambios nuevos
-version: 0.0.5
+description: Side navigation para la web y tablets
+version: 1.0.5
 repository: https://github.com/Hecmapp/fl_side_nav
 
 environment:

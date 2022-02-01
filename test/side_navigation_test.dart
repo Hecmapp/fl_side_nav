@@ -18,13 +18,13 @@ void main() {
     ];
     // Given bar
     SideNavigationBar sideNavigationBar = SideNavigationBar(
-        selectedIndex: selectedIndex,
-        items: const [
-          SideNavigationBarItem(icon: Icons.dashboard, label: 'Dashboard')
-        ],
-        onTap: (index) {
-          selectedIndex = index;
-        });
+      selectedIndex: selectedIndex,
+      items: const [SideNavigationBarItem(icon: Icons.dashboard, label: 'Dashboard')],
+      onTap: (index) {
+        selectedIndex = index;
+      },
+      logoImagen: Image.asset("testing.png"),
+    );
 
     // App context
     MaterialApp app = MaterialApp(
@@ -39,13 +39,11 @@ void main() {
     expect(find.byType(SideNavigationBar), findsOneWidget);
     expect(find.byIcon(Icons.dashboard), findsOneWidget);
     expect(
-        (widgetTester.firstWidget(find.byIcon(Icons.dashboard)) as Icon).color,
-        Colors.blue[200]);
+        (widgetTester.firstWidget(find.byIcon(Icons.dashboard)) as Icon).color, Colors.blue[200]);
     expect(find.byType(ListTile), findsOneWidget);
   });
 
-  testWidgets(
-      'SideNavigationBar displays its items correctly. Extra color passed.',
+  testWidgets('SideNavigationBar displays its items correctly. Extra color passed.',
       (widgetTester) async {
     // Define initial index and views
     int selectedIndex = 0;
@@ -59,13 +57,12 @@ void main() {
     // Given bar
     SideNavigationBar sideNavigationBar = SideNavigationBar(
       selectedIndex: selectedIndex,
-      items: const [
-        SideNavigationBarItem(icon: Icons.dashboard, label: 'Dashboard')
-      ],
+      items: const [SideNavigationBarItem(icon: Icons.dashboard, label: 'Dashboard')],
       onTap: (index) {
         selectedIndex = index;
       },
       selectedItemColor: Colors.pink,
+      logoImagen: Image.asset("Test.png"),
     );
 
     // App context
@@ -80,9 +77,7 @@ void main() {
     await widgetTester.pumpWidget(app);
     expect(find.byType(SideNavigationBar), findsOneWidget);
     expect(find.byIcon(Icons.dashboard), findsOneWidget);
-    expect(
-        (widgetTester.firstWidget(find.byIcon(Icons.dashboard)) as Icon).color,
-        Colors.pink);
+    expect((widgetTester.firstWidget(find.byIcon(Icons.dashboard)) as Icon).color, Colors.pink);
     expect(find.byType(ListTile), findsOneWidget);
   });
 
@@ -105,14 +100,16 @@ void main() {
     ];
     // Given bar
     SideNavigationBar sideNavigationBar = SideNavigationBar(
-        selectedIndex: selectedIndex,
-        items: const [
-          SideNavigationBarItem(icon: Icons.dashboard, label: 'Dashboard'),
-          SideNavigationBarItem(icon: Icons.person, label: 'Account')
-        ],
-        onTap: (index) {
-          selectedIndex = index;
-        });
+      selectedIndex: selectedIndex,
+      items: const [
+        SideNavigationBarItem(icon: Icons.dashboard, label: 'Dashboard'),
+        SideNavigationBarItem(icon: Icons.person, label: 'Account')
+      ],
+      onTap: (index) {
+        selectedIndex = index;
+      },
+      logoImagen: Image.asset("Test.png"),
+    );
 
     // App context
     MaterialApp app = MaterialApp(
@@ -149,14 +146,16 @@ void main() {
     ];
     // Given bar
     SideNavigationBar sideNavigationBar = SideNavigationBar(
-        selectedIndex: selectedIndex,
-        items: const [
-          SideNavigationBarItem(icon: Icons.dashboard, label: 'Dashboard'),
-          SideNavigationBarItem(icon: Icons.person, label: 'Account')
-        ],
-        onTap: (index) {
-          selectedIndex = index;
-        });
+      selectedIndex: selectedIndex,
+      items: const [
+        SideNavigationBarItem(icon: Icons.dashboard, label: 'Dashboard'),
+        SideNavigationBarItem(icon: Icons.person, label: 'Account')
+      ],
+      onTap: (index) {
+        selectedIndex = index;
+      },
+      logoImagen: Image.asset("Test.png"),
+    );
 
     // App context
     MaterialApp app = MaterialApp(

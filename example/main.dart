@@ -47,6 +47,7 @@ class _MainViewState extends State<MainView> {
           /// Pretty similar to the BottomNavigationBar!
           SideNavigationBar(
             selectedIndex: selectedIndex,
+            logoImagen: Image.asset("Testing.png"),
             items: const [
               SideNavigationBarItem(
                 icon: Icons.dashboard,

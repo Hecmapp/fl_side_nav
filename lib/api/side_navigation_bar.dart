@@ -13,6 +13,7 @@ import 'side_navigation_bar_item.dart';
 class SideNavigationBar extends StatefulWidget {
   /// The current index of the navigation bar
   final int selectedIndex;
+  final Image logoImagen;
 
   /// The items to put into the bar
   final List<SideNavigationBarItem> items;
@@ -34,17 +35,18 @@ class SideNavigationBar extends StatefulWidget {
   /// The [IconData] to use when building the button to toggle [expanded]
   final IconData expandIcon;
   final IconData shrinkIcon;
-  const SideNavigationBar(
-      {Key? key,
-      required this.selectedIndex,
-      required this.items,
-      required this.onTap,
-      this.color,
-      this.selectedItemColor,
-      this.expandable = true,
-      this.expandIcon = Icons.arrow_right,
-      this.shrinkIcon = Icons.arrow_left})
-      : super(key: key);
+  const SideNavigationBar({
+    Key? key,
+    required this.selectedIndex,
+    required this.logoImagen,
+    required this.items,
+    required this.onTap,
+    this.color,
+    this.selectedItemColor,
+    this.expandable = true,
+    this.expandIcon = Icons.arrow_right,
+    this.shrinkIcon = Icons.arrow_left,
+  }) : super(key: key);
 
   @override
   _SideNavigationBarState createState() => _SideNavigationBarState();
@@ -97,7 +99,6 @@ class _SideNavigationBarState extends State<SideNavigationBar> with SingleTicker
       child: AnimatedSize(
         curve: Curves.easeIn,
         duration: const Duration(milliseconds: 350),
-        vsync: this,
         child: SizedBox(
             width: width,
             height: double.infinity,
@@ -107,7 +108,7 @@ class _SideNavigationBarState extends State<SideNavigationBar> with SingleTicker
                   width: imageWidth,
                   child: Padding(
                     padding: const EdgeInsets.only(bottom: 50, top: 10, left: 7, right: 7),
-                    child: Image.asset('images/logofooter.png'),
+                    child: widget.logoImagen,
                   ),
                 ),
 
@@ -141,10 +142,6 @@ class _SideNavigationBarState extends State<SideNavigationBar> with SingleTicker
                         alignment: Alignment.bottomLeft,
                         child: Container(),
                       ),
-                const SizedBox(
-                  height: 10,
-                ),
-
                 const SizedBox(
                   height: 10,
                 ),
