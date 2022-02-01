@@ -13,3 +13,6 @@
 
 ## 0.0.4
 * You can now choose the background color of the `SideNavigationBar`
+
+## 0.0.5
+* Cambios para agregar el header hardcode for now
